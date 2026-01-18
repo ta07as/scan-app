@@ -1,212 +1,148 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ElectroMaster Pro — Профессиональное электрооборудование</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    body { font-family: 'Inter', sans-serif; }
-    .hero-slide { background-size: cover; background-position: center; min-height: 500px; }
-    .pulse-btn { animation: pulse 2s infinite; }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectroMaster PRO — Магазин для электромонтажников</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22; /* Оранжевый как у профи инструмента */
+            --bg-light: #f4f7f6;
+            --text-dark: #333;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        /* Шапка сайта */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 30px;
+            display: flex;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px 0 0 4px;
+            border: none;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .contact-info a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Сетка товаров */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px 0;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: contain;
+        }
+
+        .btn-buy {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: var(--accent-color);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
-<body class="bg-white text-gray-800">
+<body>
 
-  <!-- HEADER -->
-  <header class="bg-blue-900 text-white">
-    <!-- Верхняя полоса: гео и контакты -->
-    <div class="flex justify-between items-center px-4 py-2 text-sm">
-      <div>Город: <strong>Талас</strong> | Склад: В наличии</div>
-      <div>
-        <a href="https://wa.me/996755000228" target="_blank" class="flex items-center gap-2 hover:text-green-400">
-          <i class="fab fa-whatsapp"></i> Связь в WhatsApp
-        </a>
-      </div>
+<header>
+    <div class="container">
+        <div class="logo">
+            <h1>EM PRO</h1>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Поиск по артикулу или названию (например, ВВГнг)...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="contact-info">
+            <i class="fab fa-whatsapp"></i> <a href="https://wa.me/996755000228">+996 755 000 228</a>
+        </div>
     </div>
-    <!-- Логотип и поиск -->
-    <div class="flex flex-col md:flex-row justify-between items-center px-4 py-3">
-      <div class="text-2xl font-bold">ElectroMaster Pro</div>
-      <div class="flex-1 md:mx-4 w-full md:w-auto mt-2 md:mt-0">
-        <input type="text" placeholder="Поиск товара (ВВГ, розетка, автомат)" class="w-full p-2 rounded border border-gray-300 focus:outline-none">
-      </div>
-      <div class="flex gap-4 mt-2 md:mt-0">
-        <button class="bg-orange-500 px-4 py-2 rounded hover:bg-orange-600">Кабинет Профессионала</button>
-        <button class="bg-yellow-400 px-4 py-2 rounded hover:bg-yellow-500">Избранное</button>
-      </div>
-    </div>
-    <!-- МЕНЮ -->
-    <nav class="bg-blue-800">
-      <ul class="flex flex-wrap justify-center gap-4 text-sm py-2">
-        <li><a href="#" class="hover:text-yellow-400">Кабель и провод</a></li>
-        <li><a href="#" class="hover:text-yellow-400">Низковольтное оборудование</a></li>
-        <li><a href="#" class="hover:text-yellow-400">Электроустановка</a></li>
-        <li><a href="#" class="hover:text-yellow-400">Светотехника</a></li>
-        <li><a href="#" class="hover:text-yellow-400">Щитовое оборудование</a></li>
-        <li><a href="#" class="hover:text-yellow-400">Системы прокладки кабеля</a></li>
-      </ul>
-    </nav>
-  </header>
+</header>
 
-  <!-- HERO SECTION -->
-  <section class="relative">
-    <div class="hero-slide bg-[url('https://images.unsplash.com/photo-1581092795363-6f2d3c0b2f8c')] flex items-center justify-center text-white">
-      <div class="bg-black bg-opacity-50 p-8 rounded text-center">
-        <h1 class="text-3xl md:text-5xl font-bold mb-4">Спеццены для монтажников</h1>
-        <p class="mb-4">Регистрация в партнерской программе за 1 минуту</p>
-        <a href="#" class="bg-orange-500 px-6 py-3 rounded text-xl pulse-btn inline-block">Регистрация</a>
-      </div>
-    </div>
-  </section>
+<main class="container">
+    <section>
+        <h2>Популярные категории</h2>
+        <div class="product-grid" id="main-catalog">
+            </div>
+    </section>
+</main>
 
-  <!-- ПОПУЛЯРНЫЕ КАТЕГОРИИ -->
-  <section class="px-4 py-12">
-    <h2 class="text-2xl font-bold mb-6 text-center">Популярные категории</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-      <div class="border p-4 rounded hover:shadow-lg"><img src="https://via.placeholder.com/100" class="mx-auto mb-2"><p>Кабель (ВВГ)</p></div>
-      <div class="border p-4 rounded hover:shadow-lg"><img src="https://via.placeholder.com/100" class="mx-auto mb-2"><p>Модулька (Автоматы)</p></div>
-      <div class="border p-4 rounded hover:shadow-lg"><img src="https://via.placeholder.com/100" class="mx-auto mb-2"><p>Инструмент</p></div>
-      <div class="border p-4 rounded hover:shadow-lg"><img src="https://via.placeholder.com/100" class="mx-auto mb-2"><p>Умный дом</p></div>
+<footer>
+    <div class="container">
+        <p>&copy; 2026 ElectroMaster. Instagram: @ta07as.a</p>
     </div>
-  </section>
+</footer>
 
-  <!-- ПОЧЕМУ МЫ -->
-  <section class="bg-gray-100 px-4 py-12">
-    <h2 class="text-2xl font-bold mb-6 text-center">Почему мы?</h2>
-    <div class="grid md:grid-cols-3 gap-6 text-center">
-      <div class="p-4">
-        <i class="fas fa-check-circle text-blue-900 text-3xl mb-2"></i>
-        <h3 class="font-semibold mb-2">Только сертифицированный товар</h3>
-        <p>Каждый метр кабеля соответствует заявленному сечению. ГОСТ/ISO проверено.</p>
-      </div>
-      <div class="p-4">
-        <i class="fas fa-undo text-blue-900 text-3xl mb-2"></i>
-        <h3 class="font-semibold mb-2">Возврат без проблем</h3>
-        <p>Нераспечатанный товар принимаем в течение 60 дней.</p>
-      </div>
-      <div class="p-4">
-        <i class="fab fa-whatsapp text-green-400 text-3xl mb-2"></i>
-        <h3 class="font-semibold mb-2">Техподдержка в WhatsApp</h3>
-        <p>Если нужен совет на объекте — напишите нам, решим вопрос за 5 минут.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ХИТЫ ПРОДАЖ -->
-  <section class="px-4 py-12">
-    <h2 class="text-2xl font-bold mb-6 text-center">Хиты продаж</h2>
-    <div class="grid md:grid-cols-4 gap-6">
-      <div class="border p-4 rounded hover:shadow-lg">
-        <img src="https://via.placeholder.com/200" class="mb-2 w-full">
-        <h3 class="font-semibold">Автомат Schneider 16A</h3>
-        <p class="text-sm">В наличии</p>
-        <p class="font-bold">1 200 сом</p>
-        <button class="bg-orange-500 w-full py-2 mt-2 rounded hover:bg-orange-600">Купить</button>
-      </div>
-      <div class="border p-4 rounded hover:shadow-lg">
-        <img src="https://via.placeholder.com/200" class="mb-2 w-full">
-        <h3 class="font-semibold">Кабель ВВГ 3х2.5</h3>
-        <p class="text-sm">В наличии</p>
-        <p class="font-bold">65 сом/м</p>
-        <button class="bg-orange-500 w-full py-2 mt-2 rounded hover:bg-orange-600">Купить</button>
-      </div>
-      <div class="border p-4 rounded hover:shadow-lg">
-        <img src="https://via.placeholder.com/200" class="mb-2 w-full">
-        <h3 class="font-semibold">Розетка Legrand</h3>
-        <p class="text-sm">В наличии</p>
-        <p class="font-bold">450 сом</p>
-        <button class="bg-orange-500 w-full py-2 mt-2 rounded hover:bg-orange-600">Купить</button>
-      </div>
-      <div class="border p-4 rounded hover:shadow-lg">
-        <img src="https://via.placeholder.com/200" class="mb-2 w-full">
-        <h3 class="font-semibold">УЗО ABB 25A</h3>
-        <p class="text-sm">Под заказ 3 дня</p>
-        <p class="font-bold">2 300 сом</p>
-        <button class="bg-orange-500 w-full py-2 mt-2 rounded hover:bg-orange-600">Купить</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- СБОРКА ЩИТОВ -->
-  <section class="bg-blue-50 px-4 py-12 text-center">
-    <h2 class="text-2xl font-bold mb-4">Сборка щитов по вашим схемам</h2>
-    <p class="mb-4">Пришлите однолинейную схему — получите готовую спецификацию и стоимость сборки через 2 часа</p>
-    <a href="https://www.instagram.com/ta07as.a/" target="_blank" class="bg-blue-900 text-white px-6 py-3 rounded hover:bg-blue-800">Посмотреть кейсы в Instagram</a>
-  </section>
-
-  <!-- БРЕНДЫ -->
-  <section class="px-4 py-12">
-    <h2 class="text-2xl font-bold mb-6 text-center">Бренды</h2>
-    <div class="flex flex-wrap justify-center gap-6 items-center">
-      <img src="https://via.placeholder.com/100x50?text=Legrand" alt="Legrand">
-      <img src="https://via.placeholder.com/100x50?text=Finder" alt="Finder">
-      <img src="https://via.placeholder.com/100x50?text=Ostec" alt="Ostec">
-      <img src="https://via.placeholder.com/100x50?text=DKC" alt="DKC">
-      <img src="https://via.placeholder.com/100x50?text=КЭАЗ" alt="КЭАЗ">
-    </div>
-  </section>
-
-  <!-- СТАТЬИ -->
-  <section class="bg-gray-100 px-4 py-12">
-    <h2 class="text-2xl font-bold mb-6 text-center">Статьи и обучение</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="p-4 border rounded hover:shadow-lg">
-        <h3 class="font-semibold mb-2">Сравнение серий розеток</h3>
-        <p class="text-sm">Что выбрать для бюджетного ремонта?</p>
-      </div>
-      <div class="p-4 border rounded hover:shadow-lg">
-        <h3 class="font-semibold mb-2">Как отличить поддельный кабель?</h3>
-        <p class="text-sm">ГОСТ vs ТУ, советы профессионалов.</p>
-      </div>
-      <div class="p-4 border rounded hover:shadow-lg">
-        <h3 class="font-semibold mb-2">Топ-10 инструментов</h3>
-        <p class="text-sm">Которые экономят время монтажника.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="bg-blue-900 text-white px-4 py-12">
-    <div class="grid md:grid-cols-4 gap-6">
-      <div>
-        <h4 class="font-bold mb-2">О компании</h4>
-        <ul class="text-sm space-y-1">
-          <li>О нас</li>
-          <li>Реквизиты</li>
-          <li>Политика конфиденциальности</li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-bold mb-2">Покупателям</h4>
-        <ul class="text-sm space-y-1">
-          <li>Оплата</li>
-          <li>Доставка</li>
-          <li>Гарантия и возврат</li>
-          <li>Бонусная программа</li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-bold mb-2">Контакты</h4>
-        <p>Центральный склад</p>
-        <p>+996755000228</p>
-        <p>Email: info@electromaster.pro</p>
-        <p>Telegram: @ta07as</p>
-      </div>
-      <div>
-        <h4 class="font-bold mb-2">Мы в соцсетях</h4>
-        <ul class="flex gap-4">
-          <li><a href="https://instagram.com/ta07as.a" target="_blank"><i class="fab fa-instagram"></i></a></li>
-          <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-        </ul>
-      </div>
-    </div>
-    <p class="text-center text-sm mt-6">&copy; 2026 ElectroMaster Pro. Все права защищены.</p>
-  </footer>
+<script>
+    // В следующей части мы наполним это мощной логикой
+    console.log("ElectroMaster PRO Engine Loaded");
+</script>
 
 </body>
 </html>
