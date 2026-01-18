@@ -3,145 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ElectroMaster PRO — Магазин для электромонтажников</title>
+    <title>ElectroMaster PRO — Магазин Электротоваров</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
     <style>
+        /* ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ И СТИЛИ */
         :root {
-            --primary-color: #2c3e50;
-            --accent-color: #e67e22; /* Оранжевый как у профи инструмента */
-            --bg-light: #f4f7f6;
-            --text-dark: #333;
+            --primary: #1a252f;      /* Темно-синий (Индустриальный) */
+            --accent: #f39c12;       /* Оранжевый (Инструментальный) */
+            --bg: #f4f7f6;           /* Светло-серый фон */
             --white: #ffffff;
+            --text: #333;
+            --success: #27ae60;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+        * { box-sizing: border-box; }
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            margin: 0; 
+            background-color: var(--bg); 
+            color: var(--text);
+            line-height: 1.6;
         }
 
-        /* Шапка сайта */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* ШАПКА САЙТА (HEADER) */
         header {
-            background-color: var(--primary-color);
+            background: var(--primary);
             color: var(--white);
-            padding: 10px 0;
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
+        .header-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr auto;
             align-items: center;
+            gap: 20px;
         }
 
-        .search-bar {
-            flex-grow: 1;
-            margin: 0 30px;
-            display: flex;
+        .logo { font-size: 24px; font-weight: bold; color: var(--accent); text-transform: uppercase; }
+        
+        .search-box { display: flex; }
+        .search-box input { 
+            width: 100%; padding: 10px; border: none; border-radius: 4px 0 0 4px; 
+        }
+        .search-box button { 
+            background: var(--accent); border: none; padding: 10px 20px; 
+            color: white; cursor: pointer; border-radius: 0 4px 4px 0;
         }
 
-        .search-bar input {
-            width: 100%;
-            padding: 10px;
-            border-radius: 4px 0 0 4px;
-            border: none;
+        .header-contacts a {
+            color: var(--white); text-decoration: none; font-weight: bold; margin-left: 15px;
         }
 
-        .search-bar button {
-            padding: 10px 20px;
-            background-color: var(--accent-color);
-            border: none;
+        /* ГЛАВНЫЙ БАННЕР */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1621905252507-b35222028781?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
             color: white;
-            cursor: pointer;
-            border-radius: 0 4px 4px 0;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
         }
 
-        .contact-info a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        /* Сетка товаров */
+        /* КАТАЛОГ ТОВАРОВ */
+        .catalog-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 40px 0;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .product-card {
             background: var(--white);
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+            position: relative;
+            border: 1px solid #ddd;
         }
 
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .product-card img {
-            max-width: 100%;
-            height: 200px;
-            object-fit: contain;
-        }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .product-card img { max-width: 100%; height: 180px; object-fit: contain; margin-bottom: 15px; }
+        .product-card h3 { font-size: 18px; margin: 10px 0; height: 50px; overflow: hidden; }
+        .price { font-size: 22px; font-weight: bold; color: var(--primary); margin: 15px 0; }
 
         .btn-buy {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: var(--accent-color);
+            background: var(--accent);
             color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 4px;
-            margin-top: 10px;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
         }
+
+        /* АДМИН ПАНЕЛЬ */
+        #admin-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+        }
+        .admin-content {
+            background: white; width: 500px; margin: 50px auto; padding: 30px; border-radius: 10px;
+        }
+        .admin-content input, .admin-content select {
+            width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc;
+        }
+
+        /* ФУТЕР */
+        footer { background: var(--primary); color: white; padding: 40px 0; margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="container">
-        <div class="logo">
-            <h1>EM PRO</h1>
-        </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Поиск по артикулу или названию (например, ВВГнг)...">
+    <div class="container header-grid">
+        <div class="logo">ElectroMaster</div>
+        <div class="search-box">
+            <input type="text" placeholder="Поиск кабеля, автоматов, инструментов...">
             <button><i class="fas fa-search"></i></button>
         </div>
-        <div class="contact-info">
-            <i class="fab fa-whatsapp"></i> <a href="https://wa.me/996755000228">+996 755 000 228</a>
+        <div class="header-contacts">
+            <button onclick="openAdmin()" style="background:none; border:1px solid orange; color:orange; cursor:pointer; padding:5px 10px; border-radius:4px; margin-right:10px;">Админ</button>
+            <a href="https://wa.me/996755000228"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
     </div>
 </header>
 
+<section class="hero">
+    <div class="container">
+        <h1>Профессиональное Электрооборудование</h1>
+        <p>Лучшие цены для электромонтажников и строительных бригад</p>
+    </div>
+</section>
+
 <main class="container">
-    <section>
-        <h2>Популярные категории</h2>
-        <div class="product-grid" id="main-catalog">
-            </div>
-    </section>
+    <div class="catalog-title">
+        <h2>Каталог товаров</h2>
+        <span>Найдено товаров: <b id="prod-count">0</b></span>
+    </div>
+
+    <div class="product-grid" id="catalog-list">
+        </div>
 </main>
 
+<div id="admin-modal">
+    <div class="admin-content">
+        <h3>Добавить новый товар</h3>
+        <input type="text" id="p-name" placeholder="Название товара">
+        <input type="number" id="p-price" placeholder="Цена (сом)">
+        <input type="text" id="p-brand" placeholder="Бренд (ABB, Schneider...)">
+        <input type="text" id="p-img" placeholder="Ссылка на фото товара">
+        <button class="btn-buy" onclick="saveProduct()">Сохранить товар</button>
+        <button onclick="closeAdmin()" style="margin-top:10px; background:none; border:none; color:red; cursor:pointer; width:100%;">Отмена</button>
+    </div>
+</div>
+
 <footer>
-    <div class="container">
-        <p>&copy; 2026 ElectroMaster. Instagram: @ta07as.a</p>
+    <div class="container footer-grid">
+        <div>
+            <h4>Контакты</h4>
+            <p>Телефон: +996755000228</p>
+            <p>Telegram: @ta07as</p>
+        </div>
+        <div>
+            <h4>Мы в соцсетях</h4>
+            <p>Instagram: ta07as.a</p>
+            <p>GitHub: ta07as</p>
+        </div>
+        <div>
+            <h4>О магазине</h4>
+            <p>Работаем с электромонтажниками по всему региону. Только проверенный ГОСТ и надежные бренды.</p>
+        </div>
     </div>
 </footer>
 
 <script>
-    // В следующей части мы наполним это мощной логикой
-    console.log("ElectroMaster PRO Engine Loaded");
+    // БАЗА ДАННЫХ (В ПАМЯТИ БРАУЗЕРА)
+    let db = JSON.parse(localStorage.getItem('my_shop_db')) || [
+        { id: 1, name: "Кабель ВВГнг-LS 3х2.5 ГОСТ", price: 85, brand: "Конкорд", img: "https://items.s3.amazonaws.com/1000145008.jpg" },
+        { id: 2, name: "Автомат 1P 16A Schneider", price: 420, brand: "Schneider", img: "https://via.placeholder.com/200?text=Schneider" }
+    ];
+
+    function render() {
+        const list = document.getElementById('catalog-list');
+        document.getElementById('prod-count').innerText = db.length;
+        list.innerHTML = db.map(p => `
+            <div class="product-card">
+                <img src="${p.img}" onerror="this.src='https://via.placeholder.com/200?text=Electro'">
+                <h3>${p.name}</h3>
+                <p>Бренд: ${p.brand}</p>
+                <div class="price">${p.price} сом</div>
+                <button class="btn-buy" onclick="alert('Заказ отправлен на WhatsApp +996755000228')">Заказать</button>
+            </div>
+        `).join('');
+    }
+
+    function openAdmin() { document.getElementById('admin-modal').style.display = 'block'; }
+    function closeAdmin() { document.getElementById('admin-modal').style.display = 'none'; }
+
+    function saveProduct() {
+        const name = document.getElementById('p-name').value;
+        const price = document.getElementById('p-price').value;
+        const brand = document.getElementById('p-brand').value;
+        const img = document.getElementById('p-img').value;
+
+        if(name && price) {
+            db.push({ id: Date.now(), name, price, brand, img });
+            localStorage.setItem('my_shop_db', JSON.stringify(db));
+            render();
+            closeAdmin();
+        } else {
+            alert("Заполните название и цену!");
+        }
+    }
+
+    // Запуск при загрузке
+    render();
 </script>
 
 </body>
