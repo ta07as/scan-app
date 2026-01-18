@@ -1,243 +1,122 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ElectroMaster PRO — Магазин Электротоваров</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-
-    <style>
-        /* ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ И СТИЛИ */
-        :root {
-            --primary: #1a252f;      /* Темно-синий (Индустриальный) */
-            --accent: #f39c12;       /* Оранжевый (Инструментальный) */
-            --bg: #f4f7f6;           /* Светло-серый фон */
-            --white: #ffffff;
-            --text: #333;
-            --success: #27ae60;
-        }
-
-        * { box-sizing: border-box; }
-        body { 
-            font-family: 'Roboto', sans-serif; 
-            margin: 0; 
-            background-color: var(--bg); 
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-        /* ШАПКА САЙТА (HEADER) */
-        header {
-            background: var(--primary);
-            color: var(--white);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .header-grid {
-            display: grid;
-            grid-template-columns: 200px 1fr auto;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .logo { font-size: 24px; font-weight: bold; color: var(--accent); text-transform: uppercase; }
-        
-        .search-box { display: flex; }
-        .search-box input { 
-            width: 100%; padding: 10px; border: none; border-radius: 4px 0 0 4px; 
-        }
-        .search-box button { 
-            background: var(--accent); border: none; padding: 10px 20px; 
-            color: white; cursor: pointer; border-radius: 0 4px 4px 0;
-        }
-
-        .header-contacts a {
-            color: var(--white); text-decoration: none; font-weight: bold; margin-left: 15px;
-        }
-
-        /* ГЛАВНЫЙ БАННЕР */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1621905252507-b35222028781?auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        /* КАТАЛОГ ТОВАРОВ */
-        .catalog-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .product-card {
-            background: var(--white);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            transition: 0.3s;
-            position: relative;
-            border: 1px solid #ddd;
-        }
-
-        .product-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .product-card img { max-width: 100%; height: 180px; object-fit: contain; margin-bottom: 15px; }
-        .product-card h3 { font-size: 18px; margin: 10px 0; height: 50px; overflow: hidden; }
-        .price { font-size: 22px; font-weight: bold; color: var(--primary); margin: 15px 0; }
-
-        .btn-buy {
-            background: var(--accent);
-            color: white;
-            padding: 12px;
-            width: 100%;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        /* АДМИН ПАНЕЛЬ */
-        #admin-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 2000;
-        }
-        .admin-content {
-            background: white; width: 500px; margin: 50px auto; padding: 30px; border-radius: 10px;
-        }
-        .admin-content input, .admin-content select {
-            width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc;
-        }
-
-        /* ФУТЕР */
-        footer { background: var(--primary); color: white; padding: 40px 0; margin-top: 60px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-    </style>
+<meta charset="UTF-8">
+<title>Электрик Талас 24/7 — Срочный выезд | Гарантия 3 года</title>
+<meta name="description" content="Профессиональный электрик в Таласе. Срочный выезд 24/7, электромонтаж под ключ, щиты, розетки, люстры. Работа по ПУЭ и СНиП.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+html { scroll-behavior: smooth; }
+</style>
 </head>
-<body>
 
-<header>
-    <div class="container header-grid">
-        <div class="logo">ElectroMaster</div>
-        <div class="search-box">
-            <input type="text" placeholder="Поиск кабеля, автоматов, инструментов...">
-            <button><i class="fas fa-search"></i></button>
-        </div>
-        <div class="header-contacts">
-            <button onclick="openAdmin()" style="background:none; border:1px solid orange; color:orange; cursor:pointer; padding:5px 10px; border-radius:4px; margin-right:10px;">Админ</button>
-            <a href="https://wa.me/996755000228"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-        </div>
+<body class="bg-slate-900 text-gray-200">
+
+<!-- HEADER -->
+<header class="fixed top-0 left-0 w-full bg-slate-950/95 backdrop-blur z-50 shadow-lg">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+    <div class="flex items-center gap-3">
+      <img src="logo.png" alt="Электрик Талас" class="h-10">
+      <span class="font-bold text-yellow-400">ЭЛЕКТРИК ТАЛАС</span>
     </div>
+    <nav class="hidden md:flex gap-6 font-semibold">
+      <a href="#services" class="hover:text-yellow-400">Услуги</a>
+      <a href="#why" class="hover:text-yellow-400">Почему мы</a>
+      <a href="#price" class="hover:text-yellow-400">Цены</a>
+      <a href="#contacts" class="hover:text-yellow-400">Контакты</a>
+    </nav>
+    <a href="https://wa.me/996755000228" class="bg-yellow-400 text-slate-900 px-4 py-2 rounded-lg font-bold hover:scale-105 transition">
+      Вызвать
+    </a>
+  </div>
 </header>
 
-<section class="hero">
-    <div class="container">
-        <h1>Профессиональное Электрооборудование</h1>
-        <p>Лучшие цены для электромонтажников и строительных бригад</p>
+<div class="h-20"></div>
+
+<!-- HERO -->
+<section class="min-h-screen flex items-center justify-center text-center px-4">
+  <div class="max-w-4xl">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-yellow-400 mb-6">
+      Профессиональный электрик в Таласе
+    </h1>
+    <p class="text-lg md:text-xl mb-8">
+      Срочный выезд за 45 минут • Гарантия до 3 лет • Работа по ПУЭ и СНиП  
+      Безопасность вашего дома — моя ответственность
+    </p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="https://wa.me/996755000228" class="bg-yellow-400 text-slate-900 px-6 py-4 rounded-xl font-bold text-lg">
+        <i class="fab fa-whatsapp"></i> Написать в WhatsApp
+      </a>
+      <a href="#price" class="border border-yellow-400 px-6 py-4 rounded-xl font-bold hover:bg-yellow-400 hover:text-slate-900">
+        Узнать цену
+      </a>
     </div>
+  </div>
 </section>
 
-<main class="container">
-    <div class="catalog-title">
-        <h2>Каталог товаров</h2>
-        <span>Найдено товаров: <b id="prod-count">0</b></span>
-    </div>
-
-    <div class="product-grid" id="catalog-list">
-        </div>
-</main>
-
-<div id="admin-modal">
-    <div class="admin-content">
-        <h3>Добавить новый товар</h3>
-        <input type="text" id="p-name" placeholder="Название товара">
-        <input type="number" id="p-price" placeholder="Цена (сом)">
-        <input type="text" id="p-brand" placeholder="Бренд (ABB, Schneider...)">
-        <input type="text" id="p-img" placeholder="Ссылка на фото товара">
-        <button class="btn-buy" onclick="saveProduct()">Сохранить товар</button>
-        <button onclick="closeAdmin()" style="margin-top:10px; background:none; border:none; color:red; cursor:pointer; width:100%;">Отмена</button>
-    </div>
+<!-- WHY -->
+<section id="why" class="py-24 bg-slate-800 px-4">
+<h2 class="text-3xl font-bold text-center text-yellow-400 mb-14">Почему выбирают меня</h2>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+  <div class="bg-slate-900 p-6 rounded-xl">✔ Дипломированный электрик</div>
+  <div class="bg-slate-900 p-6 rounded-xl">✔ Фиксированная цена без сюрпризов</div>
+  <div class="bg-slate-900 p-6 rounded-xl">✔ Сертифицированные материалы ГОСТ</div>
+  <div class="bg-slate-900 p-6 rounded-xl">✔ Аварийный выезд 24/7</div>
+  <div class="bg-slate-900 p-6 rounded-xl">✔ Чистота после работ</div>
+  <div class="bg-slate-900 p-6 rounded-xl">✔ Гарантия до 3 лет</div>
 </div>
+</section>
 
-<footer>
-    <div class="container footer-grid">
-        <div>
-            <h4>Контакты</h4>
-            <p>Телефон: +996755000228</p>
-            <p>Telegram: @ta07as</p>
-        </div>
-        <div>
-            <h4>Мы в соцсетях</h4>
-            <p>Instagram: ta07as.a</p>
-            <p>GitHub: ta07as</p>
-        </div>
-        <div>
-            <h4>О магазине</h4>
-            <p>Работаем с электромонтажниками по всему региону. Только проверенный ГОСТ и надежные бренды.</p>
-        </div>
-    </div>
+<!-- SERVICES -->
+<section id="services" class="py-24 px-4">
+<h2 class="text-3xl font-bold text-center text-yellow-400 mb-14">Услуги</h2>
+<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+<ul class="space-y-3 list-disc ml-6">
+<li>Аварийный вызов электрика</li>
+<li>Поиск и устранение неисправностей</li>
+<li>Замена розеток и выключателей</li>
+<li>Установка автоматов и УЗО</li>
+</ul>
+<ul class="space-y-3 list-disc ml-6">
+<li>Монтаж люстр и светильников</li>
+<li>Полная замена проводки</li>
+<li>Сборка электрощитов</li>
+<li>Подключение техники</li>
+</ul>
+</div>
+</section>
+
+<!-- PRICE -->
+<section id="price" class="py-24 bg-slate-800 px-4">
+<h2 class="text-3xl font-bold text-center text-yellow-400 mb-14">Цены</h2>
+<div class="max-w-3xl mx-auto space-y-4 text-lg">
+<p>Вызов и диагностика — от <b>500 сом</b></p>
+<p>Установка розетки — от <b>300 сом</b></p>
+<p>Монтаж люстры — от <b>800 сом</b></p>
+<p>Точка под ключ — от <b>1200 сом</b></p>
+</div>
+<div class="text-center mt-10">
+<a href="https://wa.me/996755000228" class="bg-yellow-400 text-slate-900 px-6 py-4 rounded-xl font-bold">
+Рассчитать стоимость
+</a>
+</div>
+</section>
+
+<!-- CONTACTS -->
+<section id="contacts" class="py-24 px-4 text-center">
+<h2 class="text-3xl font-bold text-yellow-400 mb-8">Контакты</h2>
+<p class="mb-4">📍 Город Талас и район</p>
+<p class="mb-2">📞 <a href="tel:+996755000228" class="text-yellow-400 font-bold">+996 755 000 228</a></p>
+<p class="mb-2">💬 <a href="https://wa.me/996755000228" class="text-yellow-400">WhatsApp</a></p>
+<p class="mb-2">Telegram: <a href="https://t.me/ta07as" class="text-yellow-400">@ta07as</a></p>
+<p class="mb-6">Instagram: <a href="https://instagram.com/ta07as.a" class="text-yellow-400">ta07as.a</a></p>
+</section>
+
+<footer class="bg-slate-950 text-center py-6 text-sm text-gray-400">
+© Электрик Талас — сайт готов к работе
 </footer>
-
-<script>
-    // БАЗА ДАННЫХ (В ПАМЯТИ БРАУЗЕРА)
-    let db = JSON.parse(localStorage.getItem('my_shop_db')) || [
-        { id: 1, name: "Кабель ВВГнг-LS 3х2.5 ГОСТ", price: 85, brand: "Конкорд", img: "https://items.s3.amazonaws.com/1000145008.jpg" },
-        { id: 2, name: "Автомат 1P 16A Schneider", price: 420, brand: "Schneider", img: "https://via.placeholder.com/200?text=Schneider" }
-    ];
-
-    function render() {
-        const list = document.getElementById('catalog-list');
-        document.getElementById('prod-count').innerText = db.length;
-        list.innerHTML = db.map(p => `
-            <div class="product-card">
-                <img src="${p.img}" onerror="this.src='https://via.placeholder.com/200?text=Electro'">
-                <h3>${p.name}</h3>
-                <p>Бренд: ${p.brand}</p>
-                <div class="price">${p.price} сом</div>
-                <button class="btn-buy" onclick="alert('Заказ отправлен на WhatsApp +996755000228')">Заказать</button>
-            </div>
-        `).join('');
-    }
-
-    function openAdmin() { document.getElementById('admin-modal').style.display = 'block'; }
-    function closeAdmin() { document.getElementById('admin-modal').style.display = 'none'; }
-
-    function saveProduct() {
-        const name = document.getElementById('p-name').value;
-        const price = document.getElementById('p-price').value;
-        const brand = document.getElementById('p-brand').value;
-        const img = document.getElementById('p-img').value;
-
-        if(name && price) {
-            db.push({ id: Date.now(), name, price, brand, img });
-            localStorage.setItem('my_shop_db', JSON.stringify(db));
-            render();
-            closeAdmin();
-        } else {
-            alert("Заполните название и цену!");
-        }
-    }
-
-    // Запуск при загрузке
-    render();
-</script>
 
 </body>
 </html>
